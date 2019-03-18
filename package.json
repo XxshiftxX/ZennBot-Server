@@ -1,9 +1,10 @@
 {
-  "name": "ZennBotServer",
+  "name": "zennbot-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app",
     "test": "mocha"
   },
   "repository": {
