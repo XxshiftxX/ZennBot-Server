@@ -1,32 +1,19 @@
 {
-  "name": "zennbot-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "zennbot-api",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "tsc && node dist",
-    "test": "tsc && mocha dist/test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XxshiftxX/ZennBot-Server.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/XxshiftxX/ZennBot-Server/issues"
-  },
-  "homepage": "https://github.com/XxshiftxX/ZennBot-Server#readme",
-  "devDependencies": {
-    "@types/express": "^4.16.1",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^11.11.4",
-    "typescript": "^3.3.4000"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "@types/mongoose": "^5.3.23",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.19"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mocha": "^6.0.2",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.1.0"
   }
 }
