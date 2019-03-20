@@ -6,3 +6,4 @@ before_install:
 branches:
   only:
     - master
+services: mongodb
