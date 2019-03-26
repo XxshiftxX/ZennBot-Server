@@ -20,20 +20,20 @@ describe('=젠 조각', () => {
     });
 
 
-    it('Normal Case', () => {
-        var res = bot.GetPiece('qjfrntop');
+    it('Normal Case', async () => {
+        var res = await bot.GetPiece({ username: 'qjfrntop' });
 
-        assert.equal(res.Result, 'ok');
-        assert.equal(res.Ticket, 5);
-        assert.equal(res.Piece, 12);
-        assert.equal(res.Chat, "시프트님은 현재 5개의 티켓과 12개의 조각을 가지고 있어요!");
+        assert.equal(res.result, 'ok');
+        assert.equal(res.ticket, 55);
+        assert.equal(res.piece, 444);
+        assert.equal(res.message, "시프트님은 현재 55개의 티켓과 444개의 조각을 가지고 있어요!");
     });
 
-    it('No User in DB', () => {
-        var res = bot.GetPiece('taemino0o');
+    it('No User in DB', async () => {
+        var res = await bot.GetPiece({ username: 'taemino0o' });
 
-        assert.equal(res.Result, 'fail');
-        assert.equal(res.Chat, "시청자 DB에 이름이 존재하지 않아요!");
+        assert.equal(res.result, 'fail');
+        assert.equal(res.chat, "시청자 DB에 이름이 존재하지 않아요!");
     });
 });
 

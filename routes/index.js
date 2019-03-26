@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var tw = require('./twitch');
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+  var re = await tw.GetPiece({
+    username: 'qjfrntop'
+  });
+  console.log(re);
+  res.json(re);
 });
 
 module.exports = router;
