@@ -46,3 +46,6 @@ describe('=젠 신청', () => {
         var res = bot.RequestSong('qjfrntop')
     });
 });
+
+sequelize.close();
+bot.Bot.close();
