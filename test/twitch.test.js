@@ -47,5 +47,7 @@ describe('=젠 신청', () => {
     });
 });
 
-sequelize.close();
-bot.Bot.close();
+after(() => {
+    sequelize.close();
+    bot.Bot.close();
+});
