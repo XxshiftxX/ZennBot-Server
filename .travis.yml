@@ -10,6 +10,7 @@ node_js:
 before_install:
   - npm install mocha -g
   - mysql -e 'CREATE DATABASE zenndb_travis'
+  - mysql -e 'USE zenndb_travis'
   - mysql -e 'CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(30) NOT NULL UNIQUE, `tname` VARCHAR(15), `tdisplay` VARCHAR(15), `ticket` INTEGER NOT NULL DEFAULT 0, `piece` INTEGER DEFAULT 0, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB'
 branches:
   only:
