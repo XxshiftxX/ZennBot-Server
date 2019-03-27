@@ -2,9 +2,13 @@ const assert = require('assert');
 
 const bot = require('../routes/twitch');
 const { sequelize, User } = require('../models');
-sequelize.sync();
-User.destroy({
-    where: {}
+
+before(async () => {
+    await sequelize.sync();
+    sequelize.sync();
+    User.destroy({
+        where: {}
+    });
 });
 
 describe('=젠 조각', () => {
