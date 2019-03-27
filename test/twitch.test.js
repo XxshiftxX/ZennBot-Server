@@ -111,7 +111,7 @@ describe('=젠 신청', () => {
              username: 'taemino0o', 
              display_name: '태민태민' 
         });
-
+        
         assert.equal(res.result, 'fail');
         assert.equal(res.message, `DB에 태민태민님의 정보가 없어요!`);
     });
