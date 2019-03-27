@@ -7,7 +7,7 @@
     "dialect": "mysql"
   },
   "travis": {
-    "username": "root",
+    "username": "travis",
     "password": null,
     "database": "zenndb_travis",
     "host": "127.0.0.1",
