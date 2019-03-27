@@ -10,7 +10,7 @@ node_js:
 before_install:
   - npm install mocha -g
   - mysql -e 'CREATE DATABASE zenndb_travis'
-  - mysql -e 'ALTER DATABASE zenndb_travis DEFAULT CHARACTER SET utf8'
+  - mysql -e 'ALTER DATABASE zenndb_travis CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci'
 branches:
   only:
     - master
