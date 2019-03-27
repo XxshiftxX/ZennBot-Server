@@ -32,7 +32,7 @@ async function GetPiece(chat) {
     if (user == null) {
         return {
             result: 'fail',
-            message: `DB에 ${chat.display}님의 정보가 없습니다.`
+            message: `DB에 ${chat.display_name}님의 정보가 없어요!.`
         }
     }
 
