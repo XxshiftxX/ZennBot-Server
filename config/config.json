@@ -6,6 +6,13 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  "travis": {
+    "username": "root",
+    "password": null,
+    "database": "zenndb_travis",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
   "test": {
     "username": "root",
     "password": "shift1234",

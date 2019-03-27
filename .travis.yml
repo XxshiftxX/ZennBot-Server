@@ -6,6 +6,7 @@ node_js:
   - 10
 before_install:
   - npm install mocha -g
+  - mysql -e 'CREATE DATABASE zenndb_travis'
 branches:
   only:
     - master
