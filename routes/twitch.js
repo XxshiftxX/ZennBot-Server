@@ -9,7 +9,8 @@ const Bot = new TwitchBot({
 
 const commands = {
     조각: GetPiece
-}
+};
+const SongList = [];
 
 Bot.on('message', async (chat) => {
     if(chat.message == '테스트1124' && chat.username) {
@@ -24,7 +25,16 @@ async function GetPiece(chat) {
 
     var user = await User.findOne({
         where: { tname: username }
-    })
+    });
+
+    console.log(`${username} req >> ${user}`);
+
+    if (user == null) {
+        return {
+            result: 'fail',
+            message: `DB에 ${chat.display}님의 정보가 없습니다.`
+        }
+    }
 
     return {
         result: "ok",
@@ -36,5 +46,6 @@ async function GetPiece(chat) {
 
 module.exports = {
     Bot: Bot,
+    SongList: SongList,
     GetPiece: GetPiece
 };

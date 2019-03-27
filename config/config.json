@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "shift1234",
     "database": "zenndb_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
