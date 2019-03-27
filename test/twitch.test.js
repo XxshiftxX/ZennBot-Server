@@ -25,6 +25,7 @@ describe('=젠 조각', () => {
 
     
     it('Normal Case', async () => {
+        console.log(await User.find({}));
         var res = await bot.GetPiece({ username: 'qjfrntop' });
         
         assert.equal(res.result, 'ok');
@@ -42,7 +43,7 @@ describe('=젠 조각', () => {
 
 
     after(() => {
-        User.destroy({});
+        User.destroy({ where: {} });
     });
 });
 
