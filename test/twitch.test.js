@@ -44,7 +44,7 @@ describe('=젠 조각', () => {
 
 describe('=젠 신청', () => {
     beforeEach(() => {
-        User.destroy({});
+        User.destroy({where: {}});
         User.create({
             id: 1,
             name: "시프트P",

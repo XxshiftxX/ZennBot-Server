@@ -16,9 +16,7 @@
     "morgan": "~1.9.0",
     "mysql2": "^1.6.5",
     "node-mocks-http": "^1.7.3",
-    "npx": "^10.2.0",
     "sequelize": "^5.1.0",
-    "sinon": "^7.2.7",
     "socket.io": "^2.2.0",
     "twitch-bot": "^1.2.5"
   }
