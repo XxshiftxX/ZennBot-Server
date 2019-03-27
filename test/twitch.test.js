@@ -12,8 +12,8 @@ before(async () => {
 });
 
 describe('=젠 조각', () => {
-    before(() => {
-        User.create({
+    before(async () => {
+        await User.create({
             id: 1,
             name: "시프트P",
             tname: "qjfrntop",
@@ -25,7 +25,6 @@ describe('=젠 조각', () => {
 
     
     it('Normal Case', async () => {
-        console.log(await User.find({}));
         var res = await bot.GetPiece({ username: 'qjfrntop' });
         
         assert.equal(res.result, 'ok');
