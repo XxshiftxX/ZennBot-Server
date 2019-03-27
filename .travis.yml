@@ -12,4 +12,4 @@ branches:
     - master
 services: mysql
 script:
-  - npm test-travis
+  - npm run test-travis
