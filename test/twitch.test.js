@@ -25,7 +25,7 @@ describe('=젠 조각', () => {
 
     
     it('Normal Case', async () => {
-        var res = await bot.GetPiece({ username: 'qjfrntop' });
+        var res = await bot.Command.GetPiece({ username: 'qjfrntop' });
         
         assert.equal(res.result, 'ok');
         assert.equal(res.ticket, 55);
@@ -34,7 +34,7 @@ describe('=젠 조각', () => {
     });
 
     it('No User in DB', async () => {
-        var res = await bot.GetPiece({ username: 'taemino0o', display_name: '태민태민' });
+        var res = await bot.Command.GetPiece({ username: 'taemino0o', display_name: '태민태민' });
 
         assert.equal(res.result, 'fail');
         assert.equal(res.message, `DB에 태민태민님의 정보가 없어요!`);
@@ -54,14 +54,14 @@ describe('=젠 신청', () => {
             name: "시프트P",
             tname: "qjfrntop",
             tdisplay: "시프트",
-            ticket: 55,
-            piece: 444
+            ticket: 10,
+            piece: 10
         });
         bot.SongList.length = 0;
     });
 
     it('Normal Case - Ticket', async () => {
-        var res = await bot.RequestSong({
+        var res = await bot.Command.RequestSong({
             username: 'qjfrntop',
             args: 'test-song 1'
         });
@@ -69,12 +69,19 @@ describe('=젠 신청', () => {
         assert.equal(res.result, 'ok');
         assert.equal(res.message, '티켓 1장을 사용하여 곡 "test-song 1"을 신청했어요!');
         assert.equal(bot.SongList, [{ name: 'test-song 1', requester: 'qjfrntop', type: 'ticket' }]);
+
+        const user = await User.findOne({
+            where: { tname: 'qjfrntop' }
+        });
+
+        assert.equal(user.ticket, 9);
+        assert.equal(user.piece, 10);
     });
 
     it('Normal Case - Piece', async () => {
         User.update({ ticket: 0 }, { where: { tname: 'qjfrntop' }});
 
-        var res = await bot.RequestSong({
+        var res = await bot.Command.RequestSong({
             username: 'qjfrntop',
             args: 'test-song 2'
         });
@@ -82,18 +89,32 @@ describe('=젠 신청', () => {
         assert.equal(res.result, 'ok');
         assert.equal(res.message, '조각 3개를 사용하여 곡 "test-song 2"을 신청했어요!');
         assert.equal(bot.SongList, [{ name: 'test-song 2', requester: 'qjfrntop', type: 'piece' }]);
+
+        const user = await User.findOne({
+            where: { tname: 'qjfrntop' }
+        });
+
+        assert.equal(user.ticket, 0);
+        assert.equal(user.piece, 7);
     });
 
     it('No Points', async () => {
         User.update({ ticket: 0, piece: 0 }, { where: { tname: 'qjfrntop' }});
 
-        var res = await bot.RequestSong({
+        var res = await bot.Command.RequestSong({
             username: 'producerzenn'
         });
 
         assert.equal(res.result, 'fail');
         assert.equal(bot.length, 0);
         assert.equal(res.message, '조각이 충분하지 않아요! =젠 조각 명령어로 보유 조각을 확인해주세요!');
+
+        const user = await User.findOne({
+            where: { tname: 'qjfrntop' }
+        });
+
+        assert.equal(user.ticket, 0);
+        assert.equal(user.piece, 0);
     });
 
     it('Cooltimes', async () => {
@@ -101,7 +122,7 @@ describe('=젠 신청', () => {
         bot.SongList.push({ name: 'cooltime', requester: 'producerzenn', type: 'piece' })
         bot.SongList.push({ name: 'cooltime', requester: 'producerzenn', type: 'piece' })
 
-        var res = await bot.RequestSong({
+        var res = await bot.Command.RequestSong({
             username: 'qjfrntop'
         });
 
@@ -111,7 +132,7 @@ describe('=젠 신청', () => {
     });
 
     it('No User in DB', async () => {
-        var res = await bot.RequestSong({
+        var res = await bot.Command.RequestSong({
              username: 'taemino0o', 
              display_name: '태민태민' 
         });

@@ -7,18 +7,44 @@ const Bot = new TwitchBot({
     channels: ['producerzenn']
 });
 
-const commands = {
-    조각: GetPiece
-};
 const SongList = [];
 
 Bot.on('message', async (chat) => {
-    if(chat.message == '테스트1124' && chat.username) {
-        const { message } = await GetPiece(chat);
-        console.log(message);
-        Bot.say(message);
+    if(!chat.message.startsWith('=젠 ')) {
+        return;
     }
+    
+    const args = chat.message.substring(3).split(' ');
+    
+    ExecuteCommand(chat, args)
+    .then((res) => {
+        if(res.message != null) {
+            Bot.say(res.message);
+        }
+    })
+    .catch((err) => {
+        Bot.say('명령어가 존재하지 않아요!');
+    });
 });
+
+function ExecuteCommand(chat, cmd) {
+    const commands = {
+        "조각": GetPiece
+    }
+
+    return new Promise( async (resolve, reject) => {
+        const command = commands[cmd[0]];
+
+        if (command == undefined) {
+            reject(new Error(`There's no command named ${cmd[0]}`));
+        }
+
+        const args = cmd.slice(1);
+        const res = await command(chat, args);
+        console.log(args);
+        resolve(res);
+    });
+}
 
 async function GetPiece(chat) {
     const { username } = chat;
@@ -44,8 +70,15 @@ async function GetPiece(chat) {
     };
 }
 
+async function RequestSong(chat) {
+    
+}
+
 module.exports = {
     Bot: Bot,
     SongList: SongList,
-    GetPiece: GetPiece
+    Command: {
+        GetPiece: GetPiece,
+        RequestSong: RequestSong
+    }
 };
