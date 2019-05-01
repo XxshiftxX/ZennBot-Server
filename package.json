@@ -1,0 +1,29 @@
+{
+  "name": "zennbot-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XxshiftxX/ZennBot-Server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XxshiftxX/ZennBot-Server/issues"
+  },
+  "homepage": "https://github.com/XxshiftxX/ZennBot-Server#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^11.13.8",
+    "twitch-bot": "^1.2.5",
+    "typescript": "^3.4.5"
+  }
+}
