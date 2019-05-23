@@ -1,0 +1,18 @@
+export interface Chat {
+  color: string,
+  display_name: string,
+  emotes: string,
+  id: string,
+  mod: boolean,
+  room_id: number,
+  sent_ts: number,
+  subscriber: boolean,
+  tmi_sent_ts: number,
+  turbo: boolean,
+  user_id: number,
+  user_type: string,
+  badges: object,
+  channel: string,
+  message: string,
+  username: string,
+}
