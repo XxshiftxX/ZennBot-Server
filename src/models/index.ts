@@ -19,3 +19,15 @@ export const getPoint = (tname) => new Promise<any>((resolve, reject) => {
     resolve({ ticket, piece });
   });
 });
+
+export const updatePoint = (tname: string, type: string, amount: Number = 1) => new Promise(async (resolve, reject) => {
+  const point = await getPoint(tname);
+  connection.query(`UPDATE users SET ${type}=${point[type]+amount} WHERE tname="${tname}"`, (err) => {
+    if (err) {
+      reject(err);
+      return;
+    }
+
+    resolve();
+  });
+});
