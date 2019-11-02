@@ -18,7 +18,7 @@
     "mysql2": "^1.6.5",
     "node-mocks-http": "^1.7.3",
     "nodemon": "^1.18.10",
-    "sequelize": "^5.1.0",
+    "sequelize": "^5.15.1",
     "socket.io": "^2.2.0",
     "twitch-bot": "^1.2.5",
     "vue": "^2.6.10"
